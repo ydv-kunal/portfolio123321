@@ -26,7 +26,7 @@ export function Projects() {
         recall: "0.56",
         f1Score: "0.66",
       },
-      github: "#",
+      github: "https://github.com/ydv-kunal/-Wine-Quality-Prediction-using-Machine-Learning",
       live: null,
     },
     {
@@ -39,8 +39,8 @@ export function Projects() {
         uptime: "99%",
         features: "AI Chatbot",
       },
-      github: "#",
-      live: "#",
+      github: "https://github.com/ydv-kunal/ai-weather-app",
+      live: "https://ydv-kunal.github.io/ai-weather-app/",
     },
     {
       title: "CryptoVerse: Real-Time Crypto Tracker",
@@ -53,7 +53,7 @@ export function Projects() {
         uptime: "99%",
       },
       github: null,
-      live: "#",
+      live: "https://cryptoverse-steel.vercel.app/",
     },
   ]
 
@@ -91,7 +91,7 @@ export function Projects() {
 
                 <div className="mb-4">
                   <p
-                    className={`text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ${expandedIndex === index ? "max-h-96" : "max-h-20"}`}
+                    className={text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ${expandedIndex === index ? "max-h-96" : "max-h-20"}}
                   >
                     {project.description}
                   </p>
@@ -149,7 +149,7 @@ export function Projects() {
                         asChild
                         className="flex-1 border-orange-300 text-orange-700 hover:bg-orange-50 bg-transparent"
                       >
-                        <Link href={project.github} target="_blank">
+                        <Link href={project.github} target="_blank" rel="noopener noreferrer">
                           <Github className="w-4 h-4 mr-2" />
                           Code
                         </Link>
@@ -157,7 +157,7 @@ export function Projects() {
                     )}
                     {project.live && (
                       <Button size="sm" asChild className="flex-1 bg-orange-600 hover:bg-orange-700">
-                        <Link href={project.live} target="_blank">
+                        <Link href={project.live} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="w-4 h-4 mr-2" />
                           Demo
                         </Link>
