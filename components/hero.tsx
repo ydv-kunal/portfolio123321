@@ -8,15 +8,6 @@ import Image from "next/image"
 
 export function Hero() {
   return (
-    const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, sectionId: string) => {
-  e.preventDefault();
-  const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-    // Optionally update URL hash without jumping
-    window.history.pushState(null, "", `#${sectionId}`);
-  }
-};
     <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden bg-gradient-to-br from-violet-50 via-white to-purple-50">
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
 
@@ -46,7 +37,7 @@ export function Hero() {
               </div>
             </motion.div>
 
-            <div className="space-y-7">
+            <div className="space-y-4">
               <motion.h1
                 className="text-6xl md:text-7xl font-bold text-balance bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
@@ -83,21 +74,17 @@ export function Hero() {
               transition={{ delay: 0.5, duration: 0.6 }}
             >
               <Button size="lg" asChild className="bg-violet-600 hover:bg-violet-700">
-    <Link href="#projects" onClick={(e) => scrollToSection(e, "projects")}>
-      View Projects
-    </Link>
-  </Button>
+                <a href="#projects">View Projects</a>
+              </Button>
 
               <Button
-    size="lg"
-    variant="outline"
-    asChild
-    className="border-violet-600 text-violet-600 hover:bg-violet-50 bg-transparent"
-  >
-    <Link href="#contact" onClick={(e) => scrollToSection(e, "contact")}>
-      Get in Touch
-    </Link>
-  </Button>
+                size="lg"
+                variant="outline"
+                asChild
+                className="border-violet-600 text-violet-600 hover:bg-violet-50 bg-transparent"
+              >
+                <a href="#contact">Get in Touch</a>
+              </Button>
             </motion.div>
 
             {/* SOCIAL ICONS */}
@@ -108,7 +95,7 @@ export function Hero() {
               transition={{ delay: 0.6, duration: 0.6 }}
             >
               <a
-                href="https://github.com/ydv-kunal"
+                href="https://github.com/kunalyadav"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full border-2 border-violet-200 hover:bg-violet-100 transition-colors"
@@ -118,7 +105,7 @@ export function Hero() {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/kunal-yadav-437774280/"
+                href="https://linkedin.com/in/kunalyadav"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full border-2 border-violet-200 hover:bg-violet-100 transition-colors"
