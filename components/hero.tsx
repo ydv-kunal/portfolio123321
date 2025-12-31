@@ -74,16 +74,16 @@ export function Hero() {
               transition={{ delay: 0.5, duration: 0.6 }}
             >
               <Button size="lg" asChild className="bg-violet-600 hover:bg-violet-700">
-                <a href="#projects">View Projects</a>
+                  <Link href="#projects">View Projects</Link>
               </Button>
 
               <Button
-                size="lg"
-                variant="outline"
-                asChild
+                 size="lg"
+                 variant="outline"
+                 asChild
                 className="border-violet-600 text-violet-600 hover:bg-violet-50 bg-transparent"
-              >
-                <a href="#contact">Get in Touch</a>
+                 >
+                 <Link href="#contact">Get in Touch</Link>
               </Button>
             </motion.div>
 
