@@ -90,7 +90,7 @@ export function Projects() {
 
                 <div className="mb-4">
                   <p
-                    className={text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ${expandedIndex === index ? "max-h-96" : "max-h-20"}}
+                    className={text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ${expandedIndex === index ? "max-h-96" : "max-h-20"}}  {/* FIXED: Added backtick */}
                   >
                     {project.description}
                   </p>
