@@ -8,6 +8,15 @@ import Image from "next/image"
 
 export function Hero() {
   return (
+    const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, sectionId: string) => {
+  e.preventDefault();
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+    // Optionally update URL hash without jumping
+    window.history.pushState(null, "", `#${sectionId}`);
+  }
+};
     <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden bg-gradient-to-br from-violet-50 via-white to-purple-50">
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
 
@@ -74,17 +83,21 @@ export function Hero() {
               transition={{ delay: 0.5, duration: 0.6 }}
             >
               <Button size="lg" asChild className="bg-violet-600 hover:bg-violet-700">
-                  <Link href="#projects">View Projects</Link>
-              </Button>
+    <Link href="#projects" onClick={(e) => scrollToSection(e, "projects")}>
+      View Projects
+    </Link>
+  </Button>
 
               <Button
-                 size="lg"
-                 variant="outline"
-                 asChild
-                className="border-violet-600 text-violet-600 hover:bg-violet-50 bg-transparent"
-                 >
-                 <Link href="#contact">Get in Touch</Link>
-              </Button>
+    size="lg"
+    variant="outline"
+    asChild
+    className="border-violet-600 text-violet-600 hover:bg-violet-50 bg-transparent"
+  >
+    <Link href="#contact" onClick={(e) => scrollToSection(e, "contact")}>
+      Get in Touch
+    </Link>
+  </Button>
             </motion.div>
 
             {/* SOCIAL ICONS */}
