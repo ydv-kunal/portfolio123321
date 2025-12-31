@@ -56,6 +56,10 @@ export function Projects() {
     },
   ]
 
+  const handleExternalLink = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
   return (
     <section id="projects" ref={ref} className="py-20 px-4 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
       <div className="max-w-6xl mx-auto">
@@ -90,7 +94,7 @@ export function Projects() {
 
                 <div className="mb-4">
                   <p
-                    className={text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ${expandedIndex === index ? "max-h-96" : "max-h-20"}}  {/* FIXED: Added backtick */}
+                    className={text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ${expandedIndex === index ? "max-h-96" : "max-h-20"}}
                   >
                     {project.description}
                   </p>
@@ -145,30 +149,21 @@ export function Projects() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1 border-orange-300 text-orange-700 hover:bg-orange-50 bg-transparent p-0"
+                        className="flex-1 border-orange-300 text-orange-700 hover:bg-orange-50 bg-transparent"
+                        onClick={() => handleExternalLink(project.github!)}
                       >
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center w-full h-full px-4 py-2"
-                        >
-                          <Github className="w-4 h-4 mr-2" />
-                          Code
-                        </a>
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
                       </Button>
                     )}
                     {project.live && (
-                      <Button size="sm" className="flex-1 bg-orange-600 hover:bg-orange-700 p-0">
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center w-full h-full px-4 py-2 text-white"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Demo
-                        </a>
+                      <Button 
+                        size="sm" 
+                        className="flex-1 bg-orange-600 hover:bg-orange-700"
+                        onClick={() => handleExternalLink(project.live!)}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Demo
                       </Button>
                     )}
                   </div>
