@@ -16,21 +16,18 @@ export function Achievements() {
       title: "Silver Medalist - Kabaddi",
       description: "Arena Annual Sports Fest, Delhi Technological University",
       year: "Nov 2025",
-      highlight: true,
     },
     {
       icon: Code,
       title: "Solved 450+ DSA Problems",
       description: "Solved across LeetCode, GFG, and HackerRank. Peak rating of 1620 on LeetCode",
       year: "Oct 2025",
-      highlight: true,
     },
     {
       icon: Trophy,
       title: "Semi-Finalist - Fintechstico '25",
       description: "Hackathon at NSUT – developed a Blockchain and AI-powered microfinance platform",
       year: "Sept 2025",
-      highlight: true,
     },
     {
       icon: BookOpen,
@@ -79,19 +76,11 @@ export function Achievements() {
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <Card
-                  className={`p-6 h-full backdrop-blur-md transition-all ${
-                    achievement.highlight
-                      ? "border-2 border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-50/70 to-rose-50/70 dark:from-red-950/20 dark:to-rose-950/10 shadow-lg hover:shadow-xl hover:border-red-500/50 dark:hover:border-red-500/50"
-                      : "bg-white/70 dark:bg-slate-900/50 border border-slate-200/50 dark:border-slate-800/80 hover:border-rose-500/30 dark:hover:border-rose-500/30 hover:shadow-xl"
-                  }`}
+                  className="p-6 h-full backdrop-blur-md transition-all bg-white/70 dark:bg-slate-900/50 border border-slate-200/50 dark:border-slate-800/80 hover:border-rose-500/30 dark:hover:border-rose-500/30 hover:shadow-xl duration-300"
                 >
                   <div className="flex items-start gap-4">
                     <div
-                      className={`p-3 rounded-lg ${
-                        achievement.highlight
-                          ? "bg-red-600 dark:bg-red-500 text-white shadow-md shadow-red-500/20"
-                          : "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-100/60 dark:border-rose-900/30"
-                      }`}
+                      className="p-3 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-100/60 dark:border-rose-900/30 shadow-sm"
                     >
                       <Icon className="w-5 h-5" />
                     </div>
