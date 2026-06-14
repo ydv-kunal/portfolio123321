@@ -2,7 +2,7 @@
 
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react"
+import { Mail, Phone, MapPin, Github, Linkedin, Code } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
@@ -44,14 +44,19 @@ export function Contact() {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/kunal-yadav-437774280/",
     },
+    {
+      icon: Code,
+      label: "LeetCode",
+      href: "https://leetcode.com/u/17osEsEXnQ/",
+    },
   ]
 
   return (
-    <section id="contact" ref={ref} className="py-20 px-4 bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50">
+    <section id="contact" ref={ref} className="py-20 px-4 bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-4 text-balance bg-gradient-to-r from-slate-700 to-gray-700 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-4 text-balance bg-gradient-to-r from-slate-700 to-gray-700 dark:from-slate-300 dark:to-gray-300 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6 }}
@@ -59,7 +64,7 @@ export function Contact() {
             Let's Connect
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-700 max-w-2xl mx-auto"
+            className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -74,26 +79,26 @@ export function Contact() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card className="p-8 bg-white border-2 border-slate-200 shadow-xl">
+          <Card className="p-8 bg-white/70 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/80 shadow-xl backdrop-blur-md">
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
-                <h3 className="text-xl font-semibold mb-4 text-slate-900">Contact Information</h3>
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Contact Information</h3>
 
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon
                   const content = (
                     <motion.div
                       key={index}
-                      className="flex items-center gap-4 p-4 rounded-lg bg-slate-50"
-                      whileHover={{ scale: 1.05, backgroundColor: "rgb(241 245 249)" }}
+                      className="flex items-center gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-800/40 border border-slate-100/40 dark:border-slate-800/30 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors"
+                      whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="p-2 rounded-lg bg-white">
-                        <Icon className="w-5 h-5 text-slate-700" />
+                      <div className="p-2 rounded-lg bg-white dark:bg-slate-900 border dark:border-slate-800">
+                        <Icon className="w-5 h-5 text-slate-700 dark:text-slate-300" />
                       </div>
                       <div>
-                        <div className="text-xs text-gray-600">{info.label}</div>
-                        <div className="font-medium text-slate-900">{info.value}</div>
+                        <div className="text-xs text-gray-600 dark:text-gray-400">{info.label}</div>
+                        <div className="font-medium text-slate-900 dark:text-white">{info.value}</div>
                       </div>
                     </motion.div>
                   )
@@ -109,7 +114,7 @@ export function Contact() {
               </div>
 
               <div className="space-y-6">
-                <h3 className="text-xl font-semibold mb-4 text-slate-900">Social Media</h3>
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Social Media</h3>
 
                 <div className="space-y-4">
                   {socialLinks.map((social, index) => {
@@ -118,13 +123,13 @@ export function Contact() {
                       <motion.div key={index} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
                         <Button
                           variant="outline"
-                          className="w-full justify-start border-2 border-slate-200 hover:bg-slate-50 bg-transparent"
+                          className="w-full justify-start border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60 hover:border-violet-500/50 dark:hover:border-violet-400/50 bg-white/50 dark:bg-slate-950/40 text-slate-900 dark:text-slate-100 transition-colors shadow-sm"
                           size="lg"
                           asChild
                         >
                           <Link href={social.href} target="_blank">
-                            <Icon className="w-5 h-5 mr-3 text-slate-700" />
-                            <span className="text-slate-900">{social.label}</span>
+                            <Icon className="w-5 h-5 mr-3 text-slate-700 dark:text-slate-300" />
+                            <span>{social.label}</span>
                           </Link>
                         </Button>
                       </motion.div>
@@ -134,7 +139,7 @@ export function Contact() {
 
                 <div className="pt-6">
                   <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
-                    <Button size="lg" className="w-full bg-slate-800 hover:bg-slate-900" asChild>
+                    <Button size="lg" className="w-full bg-slate-800 hover:bg-slate-900 dark:bg-violet-600 dark:hover:bg-violet-700 dark:text-white shadow-md hover:shadow-lg transition-all" asChild>
                       <a href="mailto:yadavkunal0008@gmail.com">Send me an email</a>
                     </Button>
                   </motion.div>
