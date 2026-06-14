@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, ChevronUp } from "lucide-react"
+import { Menu, X, ChevronUp, Sun, Moon } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useTheme } from "next-themes"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -11,11 +12,19 @@ export function Navigation() {
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [activeSection, setActiveSection] = useState("")
 
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const sections = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "experience", label: "Experience" },
     { id: "projects", label: "Projects" },
+    { id: "publications", label: "Publications" },
     { id: "skills", label: "Skills" },
     { id: "achievements", label: "Achievements" },
     { id: "leadership", label: "Leadership" },
@@ -65,7 +74,7 @@ export function Navigation() {
       {/* Desktop & Mobile Navigation */}
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+          isScrolled ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-lg border-b dark:border-slate-800" : "bg-transparent"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -89,22 +98,48 @@ export function Navigation() {
                   onClick={() => scrollToSection(section.id)}
                   className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                     activeSection === section.id
-                      ? "bg-violet-100 text-violet-700 font-semibold"
-                      : "text-gray-700 hover:bg-gray-100"
+                      ? "bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 font-semibold"
+                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                   }`}
                 >
                   {section.label}
                 </button>
               ))}
+
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2 ml-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                aria-label="Toggle Theme"
+              >
+                {mounted && theme === "dark" ? (
+                  <Sun className="w-5 h-5 text-amber-500" />
+                ) : (
+                  <Moon className="w-5 h-5 text-violet-600 dark:text-violet-400" />
+                )}
+              </button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Mobile Actions Container */}
+            <div className="flex md:hidden items-center gap-2">
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                aria-label="Toggle Theme"
+              >
+                {mounted && theme === "dark" ? (
+                  <Sun className="w-5 h-5 text-amber-500" />
+                ) : (
+                  <Moon className="w-5 h-5 text-violet-600 dark:text-violet-400" />
+                )}
+              </button>
+
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -112,7 +147,7 @@ export function Navigation() {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="md:hidden bg-white border-t shadow-lg"
+              className="md:hidden bg-white dark:bg-slate-950 border-t dark:border-slate-800 shadow-lg"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -125,8 +160,8 @@ export function Navigation() {
                     onClick={() => scrollToSection(section.id)}
                     className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
                       activeSection === section.id
-                        ? "bg-violet-100 text-violet-700 font-semibold"
-                        : "text-gray-700 hover:bg-gray-100"
+                        ? "bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 font-semibold"
+                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                     }`}
                   >
                     {section.label}
