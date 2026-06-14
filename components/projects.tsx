@@ -14,44 +14,66 @@ export function Projects() {
 
   const projects = [
     {
-      title: "VinoPredict: Wine Quality Classification",
+      title: "CryptoArena – Real-Time Crypto Paper Trading Platform",
       description:
-        "Machine learning model using Random Forest & XGBoost achieving 91.1% prediction accuracy on UCI Wine Quality dataset (6,497 samples). Implemented feature engineering and binary classification with comprehensive performance validation.",
-      tech: ["Python", "Random Forest", "XGBoost", "Machine Learning", "Feature Engineering"],
+        "Built a risk-free paper trading website where users can learn and practice using virtual cash under real-market conditions. Developed the backend using a microservices architecture to cleanly separate user login logic from trading operations. Used WebSockets to stream live market prices and packaged the entire database, backend, and frontend using Docker Compose for easy setup.",
+      tech: [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Socket.IO",
+        "Binance WebSocket API",
+        "Docker",
+        "AWS EC2",
+        "Material UI",
+        "Axios",
+        "JWT",
+        "Bcrypt",
+      ],
+      metrics: {
+        architecture: "Microservices",
+        setup: "Docker Compose",
+        dataStream: "WebSockets",
+      },
+      github: "https://github.com/ydv-kunal/CryptoArena",
+      live: null,
+    },
+    {
+      title: "Narrative AI – AI-Powered Interactive Storyteller",
+      description:
+        "Engineered a full-stack AI storyteller with 9 saved stories per user, each with up to 6 dynamically generated chapters. Integrated 2 LLM engines with intelligent fallback handling, ensuring 100% story continuity in API failures and retries. Designed choice-driven narratives where each chapter generates 2 decision paths, influencing 3 real-time scores (morality, risk, emotion) that alter story progression to personalize user experience and improve engagement.",
+      tech: [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "Tailwind CSS",
+        "Context API",
+        "MongoDB",
+        "Firebase",
+        "Gemini API",
+        "Groq API",
+      ],
+      metrics: {
+        savedStories: "9 per User",
+        chapters: "Up to 6",
+        llmEngines: "2 Engines",
+      },
+      github: "https://github.com/ydv-kunal/Narrative-AI",
+      live: null,
+    },
+    {
+      title: "VinoPredict – Wine Quality Classification",
+      description:
+        "Implemented a machine learning model on the UCI Wine Quality dataset (6,497 samples), achieving 91.1% accuracy. Applied feature engineering and binary classification (Good vs Not Good), validated with a confusion matrix (Precision: 0.81, Recall: 0.56, F1-score: 0.66) to address class imbalance and ensure robust evaluation.",
+      tech: ["Python", "NumPy", "Pandas", "Random Forest", "XGBoost", "Machine Learning"],
       metrics: {
         accuracy: "91.1%",
-        precision: "0.81",
-        recall: "0.56",
+        samples: "6,497",
         f1Score: "0.66",
       },
       github: "https://github.com/ydv-kunal/-Wine-Quality-Prediction-using-Machine-Learning",
       live: null,
-    },
-    {
-      title: "ClimaSmart: AI-Powered Weather App",
-      description:
-        "Responsive weather application with AI Chatbot & Dynamic UI delivering real-time forecasts for 200,000+ cities worldwide. Integrated Google Gemini chatbot for personalized activity and health recommendations with weather-based animations.",
-      tech: ["JavaScript", "HTML", "CSS", "Tailwind", "OpenWeatherMap API", "Google Gemini"],
-      metrics: {
-        cities: "200,000+",
-        uptime: "99%",
-        features: "AI Chatbot",
-      },
-      github: "https://github.com/ydv-kunal/ai-weather-app",
-      live: "https://ydv-kunal.github.io/ai-weather-app/",
-    },
-    {
-      title: "CryptoVerse: Real-Time Crypto Tracker",
-      description:
-        "Responsive web platform delivering live analytics for top 100 cryptocurrencies including price, market cap, and 24h trends. Features Google & Email authentication with personalized wishlist system and interactive charts.",
-      tech: ["React.js", "Tailwind CSS", "Firebase", "CoinGecko API", "Authentication"],
-      metrics: {
-        cryptos: "100+",
-        loading: "<1s",
-        uptime: "99%",
-      },
-      github: null,
-      live: "https://cryptoverse-steel.vercel.app/",
     },
   ]
 
@@ -59,11 +81,11 @@ export function Projects() {
     <section
       id="projects"
       ref={ref}
-      className="py-20 px-4 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50"
+      className="py-20 px-4 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-slate-950 dark:via-slate-900 dark:to-amber-950/20"
     >
       <div className="max-w-6xl mx-auto">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-amber-600 dark:from-orange-400 dark:to-amber-400 bg-clip-text text-transparent"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -72,7 +94,7 @@ export function Projects() {
         </motion.h2>
 
         <motion.p
-          className="text-lg text-gray-700 mb-12 max-w-2xl"
+          className="text-lg text-gray-700 dark:text-gray-300 mb-12 max-w-2xl"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -89,14 +111,14 @@ export function Projects() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.03 }}
             >
-              <Card className="p-6 flex flex-col bg-white border-2 border-orange-100 hover:shadow-2xl transition-all">
-                <h3 className="text-xl font-semibold mb-3 text-orange-900">
+              <Card className="p-6 flex flex-col bg-white dark:bg-slate-900/60 border-2 border-orange-100 dark:border-orange-950/40 hover:shadow-2xl transition-all">
+                <h3 className="text-xl font-semibold mb-3 text-orange-900 dark:text-orange-300">
                   {project.title}
                 </h3>
 
                 <div className="mb-4">
                   <p
-                    className={`text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ${
+                    className={`text-gray-700 dark:text-gray-300 leading-relaxed overflow-hidden transition-all duration-300 ${
                       expandedIndex === index ? "max-h-96" : "max-h-20"
                     }`}
                   >
@@ -109,7 +131,7 @@ export function Projects() {
                     onClick={() =>
                       setExpandedIndex(expandedIndex === index ? null : index)
                     }
-                    className="mt-1 text-orange-600 hover:text-orange-700 hover:bg-orange-50 px-0"
+                    className="mt-1 text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 hover:bg-orange-50 dark:hover:bg-orange-950/30 px-0"
                   >
                     {expandedIndex === index ? (
                       <>
@@ -126,13 +148,13 @@ export function Projects() {
                 </div>
 
                 <div className="space-y-4 mt-auto">
-                  <div className="grid grid-cols-2 gap-2 p-4 bg-orange-50 rounded-lg">
+                  <div className="grid grid-cols-2 gap-2 p-4 bg-orange-50 dark:bg-orange-950/20 rounded-lg">
                     {Object.entries(project.metrics).map(([k, v]) => (
                       <div key={k}>
-                        <div className="text-xs text-gray-600 capitalize">
+                        <div className="text-xs text-gray-600 dark:text-gray-400 capitalize">
                           {k.replace(/([A-Z])/g, " $1").trim()}
                         </div>
-                        <div className="font-semibold text-orange-700">
+                        <div className="font-semibold text-orange-700 dark:text-orange-400">
                           {v}
                         </div>
                       </div>
@@ -143,13 +165,13 @@ export function Projects() {
                     {project.tech.slice(0, 3).map((tech, i) => (
                       <Badge
                         key={i}
-                        className="text-xs bg-orange-100 text-orange-700 border-orange-200"
+                        className="text-xs bg-orange-100 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-900/50"
                       >
                         {tech}
                       </Badge>
                     ))}
                     {project.tech.length > 3 && (
-                      <Badge className="text-xs bg-orange-100 text-orange-700 border-orange-200">
+                      <Badge className="text-xs bg-orange-100 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-900/50">
                         +{project.tech.length - 3}
                       </Badge>
                     )}
@@ -158,7 +180,7 @@ export function Projects() {
                   <div className="flex gap-2 pt-2">
                     {project.github && (
                       <Button asChild size="sm" variant="outline"
-                        className="flex-1 border-orange-300 text-orange-700 hover:bg-orange-50"
+                        className="flex-1 border-orange-300 dark:border-orange-800 text-orange-700 dark:text-orange-300 hover:bg-orange-50 dark:hover:bg-orange-900/40"
                       >
                         <a
                           href={project.github}
